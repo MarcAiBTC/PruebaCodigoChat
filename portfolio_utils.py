@@ -7,12 +7,9 @@ from typing import List, Tuple, Dict, Optional
 
 try:
     import yfinance as yf  # type: ignore
-    import yfinance as yf
-    YF_AVAILABLE = True
-except ImportError:
-    yf = None
-    YF_AVAILABLE = False
-    
+except Exception:
+    yf = None  # yfinance may not be available in certain environments
+
 try:
     import plotly.express as px  # type: ignore
 except Exception:
@@ -379,8 +376,6 @@ def suggest_diversification(df: pd.DataFrame) -> Optional[str]:
             "Considera diversificar hacia otras clases de activos."
         )
     return None
-    
-CACHE_DURATION_MINUTES = 5
 
 def get_cached_prices(tickers: List[str], cache_duration_minutes: int = CACHE_DURATION_MINUTES) -> Dict[str, float]:
     """
