@@ -376,6 +376,8 @@ def suggest_diversification(df: pd.DataFrame) -> Optional[str]:
             "Considera diversificar hacia otras clases de activos."
         )
     return None
+    
+CACHE_DURATION_MINUTES = 5
 
 def get_cached_prices(tickers: List[str], cache_duration_minutes: int = CACHE_DURATION_MINUTES) -> Dict[str, float]:
     """
