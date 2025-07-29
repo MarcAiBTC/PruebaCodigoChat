@@ -746,7 +746,7 @@ def display_holdings_detail(metrics_df: pd.DataFrame):
             return 'color: gray'
         try:
             if '%' in str(val):
-                num_val = float(str(val).replace('%', '').replace(', '').replace(',', '').strip())
+                num_val = float(str(val).replace('%', '').replace('€', '').replace('.', '').replace(',', '.').strip())
                 if num_val > 10:
                     return 'background-color: #d4edda; color: #155724; font-weight: bold'
                 elif num_val > 0:
