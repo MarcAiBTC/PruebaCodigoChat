@@ -7,9 +7,12 @@ from typing import List, Tuple, Dict, Optional
 
 try:
     import yfinance as yf  # type: ignore
-except Exception:
-    yf = None  # yfinance may not be available in certain environments
-
+    import yfinance as yf
+    YF_AVAILABLE = True
+except ImportError:
+    yf = None
+    YF_AVAILABLE = False
+    
 try:
     import plotly.express as px  # type: ignore
 except Exception:
